@@ -1,0 +1,42 @@
+import numpy as np
+import pandas as pd
+# For visualizations
+import matplotlib.pyplot as plt
+import seaborn as sns
+# For regular expressions
+import re
+# For handling string
+import string
+# For performing mathematical operations
+import math
+
+# Importing dataset
+from google.colab import files
+uploaded = files.upload()
+
+import io
+ 
+df = pd.read_csv(io.BytesIO(uploaded['Book2.csv']))
+df.shape
+
+df.head(5)
+
+df=df[['Gender','Age range','Self-defined ethnicity','Officer-defined ethnicity','Object of search','Outcome','Outcome linked to object of search','Removal of more than just outer clothing']]
+df.shape
+print(df.columns)
+
+data = df['Self-defined ethnicity'].value_counts()
+data
+
+d1 = data.copy()
+d1.index = ['WE','WG','OE','BAC','BAA','AB','AP','WBC','M','OEG','WBA','WI']
+d1
+
+sns.set_style('dark')
+sns.scatterplot(data= d1)
+
+ data1 = df['Officer-defined ethnicity'].value_counts()
+data1
+
+sns.set_style('dark')
+sns.scatterplot(data= data1)
